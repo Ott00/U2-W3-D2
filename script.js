@@ -35,22 +35,34 @@ removeStorageBtn.addEventListener("click", function () {
   previousValue.innerText = " ";
 });
 
+// const startTimer = function () {
+//   let previousTimer = sessionStorage.getItem("currentTimer");
+//   if (previousTimer) {
+//     let timer = JSON.parse(previousTimer);
+//     console.log(timer);
+//     setInterval(() => {
+//       timer += 1;
+//       console.log(timer);
+//       sessionStorage.setItem("currentTimer", timer);
+//     }, 1000);
+//   } else {
+//     previousTimer = 0;
+//     setInterval(() => {
+//       previousTimer += 1;
+//       console.log(previousTimer);
+//       sessionStorage.setItem("currentTimer", previousTimer);
+//     }, 1000);
+//   }
+// };
+
 const startTimer = function () {
-  let previousTimer = sessionStorage.getItem("currentTimer");
-  if (previousTimer) {
-    let timer = JSON.parse(previousTimer);
+  let timer = sessionStorage.getItem("currentTimer");
+
+  timer ? (timer = JSON.parse(timer)) : (timer = 0);
+
+  setInterval(() => {
+    timer += 1;
     console.log(timer);
-    setInterval(() => {
-      timer += 1;
-      console.log(timer);
-      sessionStorage.setItem("currentTimer", timer);
-    }, 1000);
-  } else {
-    previousTimer = 0;
-    setInterval(() => {
-      previousTimer += 1;
-      console.log(previousTimer);
-      sessionStorage.setItem("currentTimer", previousTimer);
-    }, 1000);
-  }
+    sessionStorage.setItem("currentTimer", timer);
+  }, 1000);
 };
