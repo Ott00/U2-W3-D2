@@ -55,14 +55,18 @@ removeStorageBtn.addEventListener("click", function () {
 //   }
 // };
 
+// BETTER OPTION
+
 const startTimer = function () {
   let timer = sessionStorage.getItem("currentTimer");
+  const timerRender = document.getElementById("timer");
 
   timer ? (timer = JSON.parse(timer)) : (timer = 0);
 
   setInterval(() => {
     timer += 1;
-    console.log(timer);
+    // console.log(timer);
+    timerRender.innerText = timer;
     sessionStorage.setItem("currentTimer", timer);
   }, 1000);
 };
